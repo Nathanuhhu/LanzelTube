@@ -1,31 +1,19 @@
 const express = require('express');
-const multer = require('multer');
-const path = require('path');
-
 const router = express.Router();
-const upload = multer({ dest: 'uploads/' });
 
-const videos = []; // In-memory video store, replace with a database in production
+// Example data
+const videos = [
+  { id: '1', title: 'Sample Video', thumbnail: '/images/sample.jpg' }
+];
 
-router.post('/upload', upload.single('video'), (req, res) => {
-  const video = {
-    id: videos.length + 1,
-    title: req.body.title,
-    description: req.body.description,
-    path: req.file.path
-  };
-  videos.push(video);
-  res.status(200).json({ message: 'Video uploaded successfully' });
+router.get('/list', (req, res) => {
+  res.json(videos);
 });
 
-router.get('/:id', (req, res) => {
-  const video = videos.find(v => v.id == req.params.id);
-  if (video) {
-    res.sendFile(path.resolve(video.path));
-  } else {
-    res.status(404).json({ message: 'Video not found' });
-  }
+router.get('/search', (req, res) => {
+  const query = req.query.query.toLowerCase();
+  const results = videos.filter(video => video.title.toLowerCase().includes(query));
+  res.json(results);
 });
 
 module.exports = router;
-
