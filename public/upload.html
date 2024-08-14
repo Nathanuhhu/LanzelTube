@@ -4,15 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upload Video</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Upload Video</h1>
-  <form action="/video/upload" method="post" enctype="multipart/form-data">
-    <input type="text" name="title" placeholder="Title" required>
-    <input type="text" name="description" placeholder="Description" required>
-    <input type="file" name="video" accept="video/*" required>
-    <button type="submit">Upload</button>
-  </form>
+  <header>
+    <div class="logo">LanzelTube</div>
+    <a href="/index.html">Home</a>
+  </header>
+  <main>
+    <h1>Upload Video</h1>
+    <form action="/video/upload" method="post" enctype="multipart/form-data">
+      <input type="text" name="title" placeholder="Title" required>
+      <input type="text" name="description" placeholder="Description" required>
+      <input type="file" name="video" accept="video/*" required>
+      <button type="submit">Upload</button>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2024 LanzelTube. All rights reserved.</p>
+  </footer>
 </body>
 </html>
-
