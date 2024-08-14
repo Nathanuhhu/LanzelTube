@@ -4,24 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video</title>
-  <link href="https://vjs.zencdn.net/7.11.4/video-js.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1 id="videoTitle"></h1>
-  <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
-    <source id="videoSource" src="" type="video/mp4">
-  </video>
-  <h2>Comments</h2>
-  <div id="comments"></div>
-  <form id="commentForm">
-    <input type="text" id="commentText" placeholder="Add a comment" required>
-    <button type="submit">Comment</button>
-  </form>
-  <button id="likeButton">Like</button>
-  <p id="likeCount">Likes: 0</p>
-
-  <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-  <script src="scripts.js"></script>
+  <header>
+    <div class="logo">LanzelTube</div>
+    <a href="/index.html">Home</a>
+  </header>
+  <main>
+    <div class="video-player">
+      <video id="my-video" controls preload="auto" width="640" height="360">
+        <source id="videoSource" src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <h1 id="videoTitle"></h1>
+    <div id="comments"></div>
+    <form id="commentForm">
+      <input type="text" id="commentText" placeholder="Add a comment" required>
+      <button type="submit">Comment</button>
+    </form>
+    <button id="likeButton">Like</button>
+    <p id="likeCount">Likes: 0</p>
+  </main>
+  <footer>
+    <p>&copy; 2024 LanzelTube. All rights reserved.</p>
+  </footer>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
-
