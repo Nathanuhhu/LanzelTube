@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LanzelTube</title>
+  <title>Home - LanzelTube</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header>
     <div class="logo">LanzelTube</div>
-    <form id="searchForm" class="search-bar">
-      <input type="text" id="searchQuery" placeholder="Search...">
-      <button type="submit">Search</button>
-    </form>
-    <div class="nav-links">
-      <a href="/upload.html">Upload</a>
-      <a href="/profile.html">Profile</a>
-    </div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/upload">Upload</a>
+    </nav>
   </header>
   <main>
-    <h1>Featured Videos</h1>
-    <div id="videoContainer"></div>
+    <h1>Welcome to LanzelTube</h1>
+    <!-- List of videos (dummy example) -->
+    <div class="video-list">
+      <div class="video">
+        <a href="/video/1">
+          <img src="images/lanex.png" alt="small vid">
+          <h2>Sample Video</h2>
+        </a>
+      </div>
+    </div>
   </main>
   <footer>
     <p>&copy; 2024 LanzelTube. All rights reserved.</p>
   </footer>
-  <script src="js/scripts.js"></script>
 </body>
 </html>
