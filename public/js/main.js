@@ -1,18 +1,17 @@
-// JavaScript to enhance functionality (e.g., form validation, dynamic content loading)
-
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('JavaScript is working');
-
-  // Example: Form validation for upload page
-  const uploadForm = document.querySelector('form');
-  if (uploadForm) {
-    uploadForm.addEventListener('submit', (event) => {
-      const title = document.getElementById('title').value;
-      const file = document.getElementById('file').files[0];
-      if (!title || !file) {
-        event.preventDefault();
-        alert('Please fill in all fields and select a video file to upload.');
-      }
+  fetch('/videos')
+    .then(response => response.json())
+    .then(videos => {
+      const videosContainer = document.getElementById('videos');
+      videos.forEach(video => {
+        const videoElement = document.createElement('div');
+        videoElement.innerHTML = `
+          <h3>${video.title}</h3>
+          <p>${video.description}</p>
+          <video src="${video.filePath}" controls width="500"></video>
+          <a href="/video.html?id=${video._id}">View Details</a>
+        `;
+        videosContainer.appendChild(videoElement);
+      });
     });
-  }
 });
