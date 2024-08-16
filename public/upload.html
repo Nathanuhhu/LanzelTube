@@ -3,20 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload Video</title>
+  <title>Upload Video - LanzelTube</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header>
     <div class="logo">LanzelTube</div>
-    <a href="/index.html">Home</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/upload">Upload</a>
+    </nav>
   </header>
   <main>
     <h1>Upload Video</h1>
-    <form action="/video/upload" method="post" enctype="multipart/form-data">
-      <input type="text" name="title" placeholder="Title" required>
-      <input type="text" name="description" placeholder="Description" required>
-      <input type="file" name="video" accept="video/*" required>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea>
+      <label for="file">Video File:</label>
+      <input type="file" id="file" name="file" accept="video/*" required>
       <button type="submit">Upload</button>
     </form>
   </main>
