@@ -4,19 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <header>
-    <div class="logo">LanzelTube</div>
-    <a href="/index.html">Home</a>
+    <h1>Your Profile</h1>
   </header>
   <main>
-    <h1>User Profile</h1>
-    <p>Profile information goes here.</p>
+    <form action="/profiles/update" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <button type="submit">Update Profile</button>
+    </form>
   </main>
-  <footer>
-    <p>&copy; 2024 LanzelTube. All rights reserved.</p>
-  </footer>
 </body>
 </html>
