@@ -3,30 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video - LanzelTube</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/main.js" defer></script>
+  <title>Video</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <header>
-    <div class="logo">LanzelTube</div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/upload">Upload</a>
-    </nav>
+    <h1>Video</h1>
   </header>
   <main>
-    <h1>Sample Video</h1>
-    <video controls>
-      <source src="/uploads/sample.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="video-details">
-      <p>Description of the video goes here.</p>
-    </div>
+    <div id="video-container"></div>
+    <form id="comment-form">
+      <textarea id="comment-text" name="text" placeholder="Add a comment"></textarea>
+      <button type="submit">Post Comment</button>
+    </form>
+    <div id="comments"></div>
+    <script src="/js/video.js"></script>
   </main>
-  <footer>
-    <p>&copy; 2024 LanzelTube. All rights reserved.</p>
-  </footer>
 </body>
 </html>
