@@ -1,19 +1,24 @@
 {
   "name": "my-app",
   "version": "1.0.0",
-  "description": "A YouTube-like application",
+  "description": "A YouTube clone",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "express": "^4.17.1",
+    "mongoose": "^6.0.0",
+    "dotenv": "^10.0.0",
+    "csrf": "^3.0.0",
+    "sanitize-html": "^2.3.3",
+    "body-parser": "^1.19.0",
     "multer": "^1.4.4",
-    "path": "^0.12.7"
+    // other dependencies
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "author": "",
   "license": "ISC"
 }
