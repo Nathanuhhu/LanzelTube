@@ -3,32 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - LanzelTube</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/main.js" defer></script>
+  <title>My YouTube Clone</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
   <header>
-    <div class="logo">LanzelTube</div>
+    <h1>Welcome to My YouTube Clone</h1>
     <nav>
       <a href="/">Home</a>
-      <a href="/upload">Upload</a>
+      <a href="/upload.html">Upload Video</a>
+      <a href="/login.html">Login</a>
+      <a href="/register.html">Register</a>
     </nav>
   </header>
   <main>
-    <h1>Welcome to LanzelTube</h1>
-    <!-- List of videos (dummy example) -->
-    <div class="video-list">
-      <div class="video">
-        <a href="/video/1">
-          <img src="images/vid.jpg" alt="small vid">
-          <h2>Sample Video</h2>
-        </a>
-      </div>
-    </div>
+    <div id="videos"></div>
+    <script src="/js/main.js"></script>
   </main>
-  <footer>
-    <p>&copy; 2024 LanzelTube. All rights reserved.</p>
-  </footer>
 </body>
 </html>
