@@ -1,38 +1,51 @@
 const express = require('express');
-const path = require('path');
-const multer = require('multer');
 const app = express();
-const port = process.env.PORT || 3000;
+const path = require('path');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const csrf = require('csurf');
+const helmet = require('helmet');
+const videoRouter = require('./src/routes/videoRoutes');
+const authRouter = require('./src/routes/authRoutes');
+const commentRouter = require('./src/routes/commentRoutes');
+const profileRouter = require('./src/routes/profileRoutes');
+const { ensureAuthenticated } = require('./src/middleware/authMiddleware');
+const { csrfProtection } = require('./src/middleware/csrfMiddleware');
+const { sanitizeInput } = require('./src/middleware/sanitizeMiddleware');
 
-// Middleware
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
-
-// Multer setup for file uploads
-const upload = multer({ dest: 'public/uploads/' });
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: true, httpOnly: true }
+}));
+app.use(csrf());
+app.use(helmet()); // Security headers
+app.use(sanitizeInput); // Input sanitization
 
 // Routes
-const indexRouter = require('./src/routes/index');
-app.use('/', indexRouter);
+app.use('/videos', ensureAuthenticated, videoRouter);
+app.use('/auth', authRouter);
+app.use('/comments', ensureAuthenticated, commentRouter);
+app.use('/profiles', ensureAuthenticated, profileRouter);
 
-// Upload route
-app.post('/upload', upload.single('file'), (req, res) => {
-  const { title, description } = req.body;
-  const file = req.file;
-
-  // Log the file details (you would save this to your database)
-  console.log('Title:', title);
-  console.log('Description:', description);
-  console.log('File Path:', file.path);
-
-  res.redirect('/');
-});
-
-// Error handling
 app.use((req, res, next) => {
-  res.status(404).send('Sorry, we cannot find that!');
+  res.locals.csrfToken = req.csrfToken();
+  next();
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
