@@ -1,41 +1,18 @@
+// JavaScript to enhance functionality (e.g., form validation, dynamic content loading)
+
 document.addEventListener('DOMContentLoaded', () => {
-  const videoContainer = document.getElementById('videoContainer');
-  const searchForm = document.getElementById('searchForm');
+  console.log('JavaScript is working');
 
-  // Load videos for the homepage
-  if (videoContainer) {
-    fetch('/video/list') // Ensure this endpoint returns a list of videos
-      .then(response => response.json())
-      .then(videos => {
-        videoContainer.innerHTML = videos.map(video => `
-          <div class="video-thumbnail">
-            <a href="/video.html?id=${video.id}">
-              <img src="${video.thumbnail}" alt="${video.title}">
-              <div class="title">${video.title}</div>
-            </a>
-          </div>
-        `).join('');
-      });
-  }
-
-  // Handle search
-  if (searchForm) {
-    searchForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const query = document.getElementById('searchQuery').value;
-      
-      const response = await fetch(`/video/search?query=${query}`);
-      const results = await response.json();
-      
-      // Display search results
-      videoContainer.innerHTML = results.map(video => `
-        <div class="video-thumbnail">
-          <a href="/video.html?id=${video.id}">
-            <img src="${video.thumbnail}" alt="${video.title}">
-            <div class="title">${video.title}</div>
-          </a>
-        </div>
-      `).join('');
+  // Example: Form validation for upload page
+  const uploadForm = document.querySelector('form');
+  if (uploadForm) {
+    uploadForm.addEventListener('submit', (event) => {
+      const title = document.getElementById('title').value;
+      const file = document.getElementById('file').files[0];
+      if (!title || !file) {
+        event.preventDefault();
+        alert('Please fill in all fields and select a video file to upload.');
+      }
     });
   }
 });
